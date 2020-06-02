@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  app:
+    build:
+      args:
+        user: sammy
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: smart-api-php
+    container_name: smart-api-php
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./src:/var/www
+    networks:
+      - smart-network
+
+  nginx:
+    image: nginx:1.17-alpine
+    container_name: smart-api-php-nginx
+    restart: unless-stopped
+    ports:
+      - 8383:80
+    volumes:
+      - ./src:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d
+    networks:
+      - smart-network
+
+
+networks:
+  smart-network:
+    driver: bridge
+
+
+volumes:
+  src:
