@@ -1,6 +1,8 @@
 # Smart Challenge - API PHP Laravel 6
 API para busca e filtragem de Customers em um arquivo JSON local
 
+Demonstração disponível em http://167.172.132.107/
+
 ## Tecnologias utilizadas
  - Linguagem em PHP 7, pela familiaridade e performance
  - Laravel 6, pela familiaridade com o framework
